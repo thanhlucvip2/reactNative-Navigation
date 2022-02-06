@@ -13,8 +13,10 @@ import {
 // const width = Dimensions.get('window').width;
 const height = Dimensions.get('window').height;
 
-const LoginComponent = () => {
+const LoginComponent = (props: any) => {
+  const {navigation} = props;
   const [EyesPassWord, setEyesPassWord] = useState(true);
+  const [Email, setEmail] = useState('');
   return (
     <ImageBackground
       style={Styles.background}
@@ -24,7 +26,12 @@ const LoginComponent = () => {
         <View style={Styles.formLogin}>
           <View style={Styles.Email}>
             <Text style={Styles.label}>Email</Text>
-            <TextInput style={Styles.Input} placeholder="Email" />
+            <TextInput
+              style={Styles.Input}
+              placeholder="Email"
+              value={Email}
+              onChangeText={text => setEmail(text)}
+            />
           </View>
           <View style={Styles.Email}>
             <Text style={Styles.label}>PassWord</Text>
@@ -36,16 +43,27 @@ const LoginComponent = () => {
             <TouchableOpacity
               style={Styles.iconPassWord}
               onPress={() => setEyesPassWord(!EyesPassWord)}>
-              <Image
-                source={require('../image/view.png')}
-                style={Styles.iconPassWord}
-                resizeMode="contain"
-              />
+              {EyesPassWord ? (
+                <Image
+                  source={require('../image/eye-outline.png')}
+                  style={Styles.iconPassWord}
+                  resizeMode="contain"
+                />
+              ) : (
+                <Image
+                  source={require('../image/eye-off-outline.png')}
+                  style={Styles.iconPassWord}
+                  resizeMode="contain"
+                />
+              )}
             </TouchableOpacity>
           </View>
         </View>
         <View style={Styles.button}>
-          <TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => {
+              navigation.navigate('Home', {email: Email});
+            }}>
             <Text style={Styles.Login}>Đăng Nhập</Text>
           </TouchableOpacity>
           <TouchableOpacity>
@@ -90,6 +108,7 @@ const Styles = StyleSheet.create({
     borderBottomWidth: 2,
     borderColor: 'white',
     paddingRight: 35,
+    fontSize: 20,
   },
   iconPassWord: {
     height: '100%',
