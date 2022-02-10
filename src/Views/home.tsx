@@ -1,19 +1,18 @@
 import React from 'react';
 import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 const Home = (props: any) => {
-  const {navigation, route} = props;
-  const dataRoute = route.params;
+  const {navigation} = props;
+
   return (
     <View style={Styles.Main}>
       <View style={Styles.Header}>
         <TouchableOpacity
           style={Styles.buttonBack}
-          onPress={() => navigation.goBack()}>
+          onPress={() => navigation.openDrawer()}>
           <Image
             style={Styles.iconBack}
-            source={require('../image/back.png')}
+            source={require('../image/list.png')}
           />
-          <Text style={Styles.HeaderText}>Back</Text>
         </TouchableOpacity>
         <TouchableOpacity onPress={() => navigation.navigate('Setting')}>
           <Image
@@ -24,7 +23,6 @@ const Home = (props: any) => {
       </View>
       <View style={Styles.body}>
         <Text style={Styles.text}>Home Component</Text>
-        <Text>email : {dataRoute.email}</Text>
       </View>
     </View>
   );

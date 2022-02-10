@@ -62,7 +62,7 @@ const LoginComponent = (props: any) => {
         <View style={Styles.button}>
           <TouchableOpacity
             onPress={() => {
-              navigation.navigate('Home', {email: Email});
+              navigation.navigate('MenuComponents');
             }}>
             <Text style={Styles.Login}>Đăng Nhập</Text>
           </TouchableOpacity>

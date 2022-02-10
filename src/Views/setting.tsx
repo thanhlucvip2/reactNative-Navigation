@@ -1,18 +1,19 @@
 import React from 'react';
 import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+
 const Setting = (props: any) => {
   const {navigation} = props;
+
   return (
     <View style={Styles.Main}>
       <View style={Styles.Header}>
         <TouchableOpacity
           style={Styles.buttonBack}
-          onPress={() => navigation.goBack()}>
+          onPress={() => navigation.openDrawer()}>
           <Image
             style={Styles.iconBack}
-            source={require('../image/back.png')}
+            source={require('../image/list.png')}
           />
-          <Text style={Styles.HeaderText}>Back</Text>
         </TouchableOpacity>
       </View>
       <View style={Styles.body}>
